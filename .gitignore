@@ -3,6 +3,8 @@
 __pycache__/
 *.pyc
 *.pth
+*.jpg
+*/PrepData/*
 Unit_0/PrepData/
 Unit_1/PrepData/
 Unit_1/data

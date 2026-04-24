@@ -20,3 +20,8 @@ Unit_3/FIDS30.zip
 *.lock
 *.zip
 *.lock
+*.venv
+*/data/*
+*.pdf
+*.html
+*.png

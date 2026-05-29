@@ -28,3 +28,6 @@ Unit_5/FIDS30.zip
 *.html
 *.png
 *.npz
+data_download/
+datasets/
+pix2pixHD/

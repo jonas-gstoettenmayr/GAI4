@@ -20,6 +20,8 @@ data/
 data_download/
 datasets/
 pix2pixHD/
+srcaco2_data/
+prepared/
 
 *.html
 *.jpg

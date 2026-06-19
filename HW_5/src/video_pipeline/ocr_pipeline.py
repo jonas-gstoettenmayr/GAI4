@@ -97,7 +97,7 @@ class OCRPipeline:
         """Load the Qwen2.5-VL model and processor."""
         if self._model is not None:
             return
-        from transformers import AutoProcessor, Qwen2_5_VLForConditionalGeneration
+        from transformers import AutoProcessor, AutoModelForImageTextToText # Qwen2_5_VLForConditionalGeneration
 
         device, dtype = get_device_and_dtype()
         log.info("Loading %s on %s (%s)", self.model_id, device, dtype)
@@ -114,7 +114,10 @@ class OCRPipeline:
                     bnb_4bit_compute_dtype=dtype,
                     bnb_4bit_use_double_quant=True,
                 )
-        self._model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
+        # self._model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
+        #     self.model_id, **load_kwargs
+        # )
+        self._model = AutoModelForImageTextToText.from_pretrained(
             self.model_id, **load_kwargs
         )
         if not device.startswith("cuda"):
@@ -167,8 +170,13 @@ class OCRPipeline:
             text=[chat_text],
             images=image_inputs,
             videos=video_inputs,
-            padding=True,
             return_tensors="pt",
+            # processor_kwargs={
+            #     "padding": True,
+            #     # For SmolVLM, if you want to pass downsampling or formatting configs:
+            #     # "do_pad": False, 
+            # }
+            # padding=True,
         ).to(self._model.device)
 
         with torch.inference_mode():

@@ -6,8 +6,10 @@ from datetime import datetime, timezone
 
 from pydantic import BaseModel, Field
 
-WHISPER_MODEL_ID = "openai/whisper-large-v3"
-QWEN_MODEL_ID = "Qwen/Qwen2.5-VL-7B-Instruct"
+# WHISPER_MODEL_ID = "openai/whisper-large-v3"
+WHISPER_MODEL_ID = "openai/whisper-tiny" # 0.6B params
+# QWEN_MODEL_ID = "Qwen/Qwen2.5-VL-7B-Instruct"
+QWEN_MODEL_ID = "HuggingFaceTB/SmolVLM2-2.2B-Instruct"
 
 
 def _utc_now() -> str:
